@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="form-container">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="password" name="password" placeholder="Your Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/registration">Register here</a></p>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form-container">
+            <h2>Registration</h2>
+            <form action="/register" method="POST">
+                <input type="text" name="firstname" placeholder="First Name" value="" required>
+                <input type="text" name="lastname" placeholder="Last Name" value="" required>
+                <input type="email" name="email" placeholder="Your Email" value="" required>
+                <input type="text" name="phone" placeholder="Your Phone" value="" required>
+                <label class="radio inline">
+                    <input type="radio" name="gender" value="male" checked>
+                    <span>male</span>
+                </label>
+
+                <label class="radio inline">
+                    <input type="radio" name="gender" value="female" checked>
+                    <span>female</span>
+                </label>
+                <input type="number" name="age" placeholder="Your Age" value="">
+                <input type="password" name="password" placeholder="Your Password" value="">
+                <input type="password" name="confirmpassword" placeholder="Confirm Password" value="" required>
+                <input type="submit" value="Register">
+            </form>
+            <p>Already have an account? <a href="/">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

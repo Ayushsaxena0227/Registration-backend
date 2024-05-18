@@ -1,0 +1,51 @@
+intialie package file first (npm init --y)
+install npm express , mongoose
+in project folder make src ->app.js file in src and  db folder, models folder.
+require express..listen your server...
+make new file in db folder.
+connecting daatabase with express -> require mongoose in connec.js file.. and connect it with localhost
+now create public folder in main project folder (name public h hona chchiye)
+create static file index.html in public folder..
+now using this static folder..tell express that we r using this now.. app.use(express.static(path)).
+now create css folder in public and style.css in css folder (for static website u can just put your files like html js css bootstrap in public folder)
+remove index.html (coz we ll usepure nodejs)
+create views folder in main fodler. (strict name) and make file indx.hbs (template engine)
+now set app.set("view engine , "hbs") in app.js file and instead of resposnse.send write resposnse.render()
+rename views folder to templates and create new folder views in it and create one more folder partials i n templates only.
+move index.hbs login, registration.hbs inside views folder..
+create partials -> create navbar.hbs file and paste your code..
+reset your path = path.join(__dirname , "../templates/views")
+
+//  NOW SECURING OUR DATA
+//encoding decoding crypti se koi bhi ack akr lega..so dont use.(encryption) = two way communication..encode hua h to decode bhi kar satket he with i n a second
+//so we use hash algorithm - > one way communication.- > baki sare kuc seconds m hack kar ho jaege but bcrypt(12 rounds) ko hack karne me 3years s jyada time lagega.
+//md-5, sa1 ye sb mat karna.
+//just i bcypt pakckage from npm
+
+just use 
+ if(this.isModified("password"))
+    this.password = await bcrypt.hash(this.password ,10);
+    console.log(`encrypted password is ${this.password}`)
+
+This code snippet is a Mongoose middleware function that runs before saving a document (an employee) to the database.
+employeeSchema.pre("save", async function(next) {...}): This line sets up a middleware function to run before the save event of the employeeSchema. In Mongoose, middleware functions can intercept and execute code before or after certain operations like save, update, remove, etc.
+async function(next) {...}: This is the middleware function itself. It's an asynchronous function that takes next as an argument. next is a callback function that signals to Mongoose that the middleware has finished its work and that Mongoose can proceed to the next middleware or the actual operation (e.g., saving the document).
+if (this.isModified("password")) {...}: This condition checks if the password field of the document has been modified. It ensures that the encryption of the password only occurs when a new password is set or an existing password is modified.
+console.log(current password is ${this.password}): This line logs the current value of the password field before it's encrypted. It's for debugging purposes to see the original value.
+this.password = await bcrypt.hash(this.password, 10);: This line hashes (encrypts) the password using bcrypt's hash function. Bcrypt is a library commonly used for password hashing in Node.js applications. The password is hashed asynchronously using await to ensure it's done securely.
+console.log(encrypted password is ${this.password}): This line logs the hashed (encrypted) password. Again, it's for debugging purposes to verify that the password has been properly encrypted.
+this.confirmpassword = undefined;: This line ensures that the confirmpassword field is set to undefined. 
+
+//now we secured our passowrd..but jb user login karega to y confirm kese hoga ki jo usne pass dala he vo hmare database s match kartahe..ku k i db me ab pass encrypted he na.
+
+
+//JWT AUTHENTICATION AND COOKIES
+kbhi bhi jb hum kisi site p login krke add to cart karte he aur manlo website phir close kar dete he to jb vaps kholte h to vo automatically login kese rhta h? vo items cart me phele jaise ksese pade rhete he? = with help of COOKIES
+//to amazon ko kese pata ki ye vahi user h jisne add to cart m items daale the..that is only jwt AUTHENTICATION = use npm install jwt
+used jwt.sign and jwt.verify
+
+//JWT Oauth Token-> created one more field in our db name token- it will b array of object.
+
+//using .env to secure our chote chote data and hide our secret key..when we host our project on git so no one will b able to see it
+npm i dotenv
+how hwlpful? when u push your code into git so it wont dispaly your data..see commands to implemenet it
